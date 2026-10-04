@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-primary: #050911;
+    --bg-secondary: #0A101D;
+    --bg-card: #0D1527;
+    --bg-card-hover: #131E35;
+    --border-military: #1E293B;
+    --border-accent: #334155;
+    --accent-olive: #4D7C0F;
+    --accent-camo: #365314;
+    --accent-cyan: #06B6D4;
+    --status-critical: #EF4444;
+    --status-warning: #F59E0B;
+    --status-medium: #EAB308;
+    --status-stable: #22C55E;
+  }
+
+  body {
+    background-color: #050911;
+    color: #E2E8F0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  /* Military Tactical Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #090E17;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1E293B;
+    border-radius: 2px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #334155;
+  }
+}
+
+/* Tactical HUD styling utilities */
+.hud-card {
+  position: relative;
+  background: rgba(13, 21, 39, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(51, 65, 85, 0.6);
+  border-radius: 4px;
+}
+
+.hud-card:hover {
+  border-color: rgba(6, 182, 212, 0.4);
+}
+
+.hud-bracket {
+  position: relative;
+}
+
+.hud-bracket::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #06B6D4;
+  border-left: 2px solid #06B6D4;
+  pointer-events: none;
+}
+
+.hud-bracket::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  border-bottom: 2px solid #06B6D4;
+  border-right: 2px solid #06B6D4;
+  pointer-events: none;
+}
+
+/* Military Scanlines (very subtle) */
+.scanlines {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  );
+  background-size: 100% 4px;
+}
+
+/* Tactical Military Grid Background */
+.tactical-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* Radar pulse animation */
+@keyframes radar-ping {
+  0% {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  75%, 100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.animate-radar-ping {
+  animation: radar-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Glowing text and borders */
+.glow-critical {
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+}
+
+.glow-warning {
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.35);
+}
+
+.glow-stable {
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.35);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.35);
+}
+
+/* Military Monospace font styling */
+.font-mono-military {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  letter-spacing: 0.05em;
+}
+
+/* Subtle Shimmer for High Priority Actions */
+@keyframes hud-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.hud-shimmer-badge {
+  background: linear-gradient(90deg, rgba(239,68,68,0.1) 0%, rgba(239,68,68,0.3) 50%, rgba(239,68,68,0.1) 100%);
+  background-size: 200% 100%;
+  animation: hud-shimmer 3s infinite linear;
+}
